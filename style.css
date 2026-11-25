@@ -1,0 +1,264 @@
+:root {
+  --main-color: #ea80b0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  user-select: none;
+}
+
+/* --- Partikel Latar Belakang --- */
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  bottom: -30px;
+  color: var(--main-color);
+  text-shadow: 0 0 8px var(--main-color);
+  opacity: 0;
+  animation: floatUp linear infinite;
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* --- Animasi Hati Utama --- */
+#ui {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+#ui .love {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -225px 0 0 -225px;
+  --delay: calc(var(--i) * -250ms);
+}
+
+#ui .love_horizontal {
+  animation: horizontal 10000ms infinite alternate ease-in-out;
+  animation-delay: var(--delay);
+}
+
+#ui .love_vertical {
+  animation: vertical 20000ms infinite linear;
+  animation-delay: var(--delay);
+}
+
+#ui .love_word {
+  color: var(--main-color);
+  font-size: 1.4rem;
+  transform: translateY(-100%) rotateZ(-30deg);
+  text-shadow: 0 0 10px #fff, 0 0 18px var(--main-color);
+  letter-spacing: 2px;
+  white-space: nowrap;
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+/* --- Kotak Input Custom Teks --- */
+.text-modal {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--main-color);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), 0 0 10px var(--main-color);
+  border-radius: 50px;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.text-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.text-modal input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  padding: 4px 10px;
+  width: 175px;
+}
+
+.text-modal input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.text-modal button {
+  background: var(--main-color);
+  color: #000;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 50px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.4s ease;
+}
+
+.text-modal button:hover {
+  transform: scale(1.05);
+}
+
+/* --- Bilah Kontrol Bawah --- */
+.control-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50px;
+  z-index: 10;
+}
+
+.theme-switcher {
+  display: flex;
+  gap: 12px;
+}
+
+.color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background-color: var(--btn-color);
+  box-shadow: 0 0 10px var(--btn-color);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.color-dot:hover {
+  transform: scale(1.2);
+}
+
+.color-dot.active {
+  border-color: #fff;
+  transform: scale(1.15);
+}
+
+.divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.edit-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.edit-btn:hover {
+  color: var(--main-color);
+  transform: scale(1.15);
+}
+
+/* Responsif untuk layar HP */
+@media (max-width: 540px) {
+  #ui {
+    transform: scale(0.68);
+  }
+
+  .text-modal {
+    top: 24px;
+    bottom: auto;
+    transform: translateX(-50%) translateY(-15px);
+  }
+
+  .text-modal.show {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* --- Keyframes Kurva Hati --- */
+@keyframes horizontal {
+  from { transform: translateX(0px); }
+  to { transform: translateX(450px); }
+}
+
+@keyframes vertical {
+  0% { transform: translateY(180px); }
+  10% { transform: translateY(45px); }
+  15% { transform: translateY(4.5px); }
+  18% { transform: translateY(0px); }
+  20% { transform: translateY(4.5px); }
+  22% { transform: translateY(34.61538px); }
+  24% { transform: translateY(64.28571px); }
+  25% { transform: translateY(112.5px); }
+  26% { transform: translateY(64.28571px); }
+  28% { transform: translateY(34.61538px); }
+  30% { transform: translateY(4.5px); }
+  32% { transform: translateY(0px); }
+  35% { transform: translateY(4.5px); }
+  40% { transform: translateY(45px); }
+  50% { transform: translateY(180px); }
+  71% { transform: translateY(428.57143px); }
+  72.5% { transform: translateY(441.17647px); }
+  75% { transform: translateY(450px); }
+  77.5% { transform: translateY(441.17647px); }
+  79% { transform: translateY(428.57143px); }
+  100% { transform: translateY(180px); }
+}

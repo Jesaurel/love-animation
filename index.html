@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Love Heart Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Wadah partikel latar belakang -->
+  <div id="particles"></div>
+
+  <!-- Wadah animasi hati utama -->
+  <div id="ui"></div>
+
+  <!-- Kotak input custom teks (tersembunyi secara default) -->
+  <div class="text-modal" id="textModal">
+    <input type="text" id="customTextInput" maxlength="25" placeholder="Ketik teks (maks 25 huruf)..." autocomplete="off">
+    <button id="applyTextBtn">Ubah</button>
+  </div>
+
+  <!-- Bilah kontrol bawah: Ganti Warna + Tombol Buka Input Teks -->
+  <div class="control-bar">
+    <div class="theme-switcher" title="Ganti Warna Neon">
+      <button class="color-dot active" data-color="#ea80b0" style="--btn-color: #ea80b0;" aria-label="Pink Neon"></button>
+      <button class="color-dot" data-color="#00f3ff" style="--btn-color: #00f3ff;" aria-label="Biru Cyan"></button>
+      <button class="color-dot" data-color="#b537f2" style="--btn-color: #b537f2;" aria-label="Ungu Neon"></button>
+      <button class="color-dot" data-color="#ffd700" style="--btn-color: #ffd700;" aria-label="Emas Neon"></button>
+    </div>
+
+    <div class="divider"></div>
+
+    <button class="edit-btn" id="toggleEditBtn" title="Ganti Teks Hati" aria-label="Ganti Teks Hati">✎</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
